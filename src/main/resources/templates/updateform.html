@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Update Customers</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+  </head>
+  <body>
+    <form th:action="@{/updatecustomer}" th:object="${customer}" method="POST">
+      <div class="form-group">
+        <label for="customerId" class="mx-3 my-3">Customer Id</label>
+        <input
+          type="number"
+          th:field="*{cid}"
+          class="form-control col-2 mx-3 my-3"
+          placeholder="Enter customer id"
+          th:value="${customer.cid}"
+          readonly
+        />
+      </div>
+      <div class="form-group">
+        <label for="customerName" class="mx-3 my-3">Customer Name</label>
+        <input
+          type="text"
+          th:field="*{cname}"
+          class="form-control col-2 mx-3 my-3"
+          placeholder="Enter customer name"
+          th:value="${customer.cname}"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="mobile" class="mx-3 my-3">Customer Mobile Number</label>
+        <input
+          type="number"
+          th:field="*{mobile}"
+          class="form-control col-2 mx-3 my-3"
+          placeholder="Enter mobile"
+          th:value="${customer.mobile}"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-primary mx-3 my-3">Submit</button>
+    </form>
+  </body>
+</html>

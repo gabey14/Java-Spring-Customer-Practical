@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Customers</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+  </head>
+  <body>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">CID</th>
+          <th scope="col">CNAME</th>
+          <th scope="col">MOBILE</th>
+          <th scope="col">UPDATE</th>
+          <th scope="col">DELETE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="customer:${allcustomers}">
+          <td th:text="${customer.cid}"></td>
+          <td th:text="${customer.cname}"></td>
+          <td th:text="${customer.mobile}"></td>
+          <!--  <td><a th:href="@{/customer/${customer.cid}}" class="btn btn-danger">Delete</a></td> -->
+          <td>
+            <a
+              th:href="@{/updateform/{cid}(cid=${customer.cid})}"
+              class="btn btn-success"
+              >Update</a
+            >
+          </td>
+          <td>
+            <a
+              th:href="@{/deletecustomer/{cid}(cid=${customer.cid})}"
+              class="btn btn-danger"
+              >Delete</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
